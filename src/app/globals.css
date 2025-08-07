@@ -1,0 +1,199 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 45 44% 93%; /* #F5F1E5 */
+    --foreground: 0 0% 12%; /* #1F1F1F */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+    --primary: 36 100% 60%; /* #FFAA33 */
+    --primary-foreground: 0 0% 12%;
+    --secondary: 0 100% 71%; /* #FF6B6B */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 92%;
+    --input: 42 21% 76%; /* #CFC7B5 */
+    --ring: 36 100% 60%;
+    --chart-1: 36 100% 60%;
+    --chart-2: 0 100% 71%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 1rem; /* increased from 0.5rem */
+  }
+  .dark {
+    --background: 0 0% 12%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 36 100% 60%;
+    --primary-foreground: 0 0% 12%;
+    --secondary: 0 100% 71%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 36 100% 60%;
+    --chart-1: 36 100% 60%;
+    --chart-2: 0 100% 71%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Gradient for KPI cards */
+.kpi-gradient-1 {
+  background-image: linear-gradient(to left, #F9DB4B, #FFC371);
+}
+
+.kpi-gradient-2 {
+  background-image: linear-gradient(to right, #FF6B6B, #FFC371);
+}
+
+/* Calendar modifiers for Student Dashboard */
+.day-present {
+  background-color: #50C878;
+  color: white;
+}
+.day-present:hover {
+  background-color: #45a064;
+  color: white;
+}
+
+.day-absent {
+    background-color: #FF2E2E;
+    color: white;
+}
+.day-absent:hover {
+    background-color: #d42626;
+    color: white;
+}
+
+.day-today {
+    background-color: #FFB343 !important;
+    color: white !important;
+    border: 2px solid hsl(var(--foreground));
+}
+
+/* Streak Tracker Styles */
+.streak-card-bg {
+    background: linear-gradient(135deg, #232526, #414345);
+    border: none;
+}
+
+.pixelated {
+    image-rendering: pixelated;
+}
+
+@keyframes idle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes tail-flicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes dance {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(5deg) scale(1.02); }
+    75% { transform: rotate(-5deg) scale(1.02); }
+}
+
+@keyframes evolve {
+    0% { filter: drop-shadow(0 0 0 white); opacity: 0.8; }
+    50% { filter: drop-shadow(0 0 15px white); opacity: 1; transform: scale(1.1); }
+    100% { filter: drop-shadow(0 0 0 white); opacity: 1; }
+}
+
+@keyframes fly {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes flicker {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+    20% { transform: scale(1.1) rotate(-2deg) translateY(-5px); opacity: 0.6; }
+    40% { transform: scale(0.95) rotate(3deg) translateY(2px); opacity: 0.4; }
+    60% { transform: scale(1.05) rotate(-1deg) translateY(-3px); opacity: 0.7; }
+    80% { transform: scale(1) rotate(1deg) translateY(0); opacity: 0.5; }
+}
+
+
+.animate-idle {
+    animation: idle 2s ease-in-out infinite;
+}
+
+.animate-dance {
+    animation: dance 1s ease-in-out infinite;
+}
+
+.animate-evolve {
+    animation: evolve 1.5s ease-in-out;
+}
+
+.animate-flying {
+    animation: fly 3s ease-in-out infinite;
+}
+
+.animate-flicker {
+    animation: flicker 1s ease-in-out infinite;
+}
+
+
+/* Placeholder for flamethrower animation if we use a separate element */
+@keyframes flamethrower {
+    0% { transform: scaleX(0); opacity: 0; }
+    50% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+.flame {
+    /* Style for the flame element if you add one */
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    /* You'd use a background image for the flame sprite */
+}
+
+.animate-flame-active {
+    display: block;
+    animation: flamethrower 1s ease-in-out;
+}
+
+    
